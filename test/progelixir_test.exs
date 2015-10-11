@@ -43,4 +43,12 @@ defmodule ProgelixirTest do
   test "guess a number in range" do
     assert Progelixir.guess(273, 1..1000) == 273
   end
+
+  test "sum function" do
+    assert Progelixir.sum([1,2,3,4]) == 10
+  end
+
+  test "caesar cypher" do
+    assert Progelixir.caesar('ryvkve', 13) == 'elixir'
+  end
 end

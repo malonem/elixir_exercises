@@ -10,7 +10,7 @@ defmodule Progelixir do
   def gcd(x, 0), do: x
   def gcd(x, y), do: gcd(y, rem(x, y))
 
-  def reduce(low, high), do: div(high-low, 2)
+  defp reduce(low, high), do: div(high-low, 2)
   def guess(number, low..high) when high > number do
     guess(number, low..(reduce(low,high) + low))
   end
@@ -18,5 +18,17 @@ defmodule Progelixir do
     guess(number, high..(reduce(low, high) + high + 1))
   end
   def guess(number, low..high) when high == number, do: number
+
+  def sum([]), do: 0
+  def sum([head|tail]), do: head + sum(tail)
+
+  def caesar([], n), do: []
+  def caesar([head|tail], n)
+  when head+n <= ?z do
+    [head+n | caesar(tail, n)]
+  end
+  def caesar([head|tail], n) do
+    [head + n - ?z + ?a - 1 | caesar(tail, n)]
+  end
 
 end
